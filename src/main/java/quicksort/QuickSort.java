@@ -3,19 +3,19 @@ package quicksort;
 import java.util.Arrays;
 
 public class QuickSort {
-    public static void quickSort(int[] array, int low, int high) {
+    public static void quickSort(int[] array, int left, int right) {
         if (array.length == 0)
             return;//завершить выполнение если длина массива равна 0
 
-        if (low >= high)
+        if (left >= right)
             return;//завершить выполнение если уже нечего делить
 
         // выбрать опорный элемент
-        int middle = low + (high - low) / 2;
+        int middle = left + (right - left) / 2;
         int opora = array[middle];
 
         // разделить на подмассивы, который больше и меньше опорного элемента
-        int i = low, j = high;
+        int i = left, j = right;
         while (i <= j) {
             while (array[i] < opora) {
                 i++;
@@ -35,11 +35,11 @@ public class QuickSort {
         }
 
         // вызов рекурсии для сортировки левой и правой части
-        if (low < j)
-            quickSort(array, low, j);
+        if (left < j)
+            quickSort(array, left, j);
 
-        if (high > i)
-            quickSort(array, high, i);
+        if (right > i)
+            quickSort(array, right, i);
     }
 
     public static void main(String[] args) {
@@ -47,10 +47,10 @@ public class QuickSort {
         System.out.println("Было");
         System.out.println(Arrays.toString(x));
 
-        int low = 0;
-        int high = x.length - 1;
+        int left = 0;
+        int right = x.length - 1;
 
-        quickSort(x, low, high);
+        quickSort(x, left, right);
         System.out.println("Стало");
         System.out.println(Arrays.toString(x));
     }
